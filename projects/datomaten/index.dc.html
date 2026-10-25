@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>if(/[?&]cover=1/.test(location.search)){document.documentElement.classList.add("cover","still");document.write('<style>html.still *,html.still *::before,html.still *::after{animation:none!important;transition:none!important}html.still #hl-loader{display:none!important}html.still #hlogo .s,html.still #hlogo .dot{opacity:1!important;stroke-dashoffset:0!important;transform:none!important}</style>')}</script>
+<script>if(/[?&]cover=1/.test(location.search))document.documentElement.classList.add("cover");</script>
+<style>html.cover,html.cover body{overflow:hidden;scrollbar-width:none}html.cover ::-webkit-scrollbar{display:none}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<script>if(!/[?&]cover=1/.test(location.search))document.documentElement.classList.add("intro");</script>
+<style>
+html:not(.intro) #dm-loader{display:none}
+html.intro:not(.dm-ready){overflow:hidden}
+#dm-loader{position:fixed;inset:0;z-index:2147483647;background:#f3f1eb;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Archivo',Helvetica,Arial,sans-serif;transition:opacity .45s ease,visibility .45s}
+#dm-loader.done{opacity:0;visibility:hidden}
+#dm-lapp{background:linear-gradient(180deg,#e2e2dd 0px,#f7f7f3 12px,#fbfbf8 100%);padding:30px 0 16px;text-align:center;font-size:22px;font-weight:500;color:#151715;letter-spacing:.01em;border-radius:0 0 3px 3px;box-shadow:0 8px 16px -8px rgba(0,0,0,.3);animation:dmOut .9s cubic-bezier(.3,.7,.3,1) .25s both}
+html.intro:not(.dm-font) #dm-loader .dm-txt,html.intro:not(.dm-font) #dm-lapp{visibility:hidden;animation-play-state:paused}
+#dm-lapp.tear{animation:dmTear .6s ease-in both}
+@keyframes dmOut{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+@keyframes dmTear{from{transform:translateY(0);opacity:1}to{transform:translateY(24px) rotate(-4deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="dm-loader" aria-label="Laster"><div style="display:flex;flex-direction:column;align-items:center;width:min(380px,86vw)"><div style="width:100%;aspect-ratio:1.28/1;box-sizing:border-box;border-radius:36px;background:linear-gradient(165deg,#3a6a55 0%,#2d5746 38%,#244839 100%);box-shadow:inset 0 2px 1px rgba(255,255,255,0.18),inset 0 -3px 6px rgba(0,0,0,0.25),inset 3px 0 6px rgba(255,255,255,0.05),0 6px 0 #1b3a2e,0 7px 1px rgba(0,0,0,0.25),0 40px 60px -24px rgba(20,40,30,0.55),0 14px 24px -10px rgba(20,40,30,0.35);padding:7% 8% 0;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2">
+<div style="position:absolute;right:-3px;top:46%;width:4px;height:26px;border-radius:2px;background:#183128"></div>
+<div style="width:100%;box-sizing:border-box;padding:5px;border-radius:12px;background:#1b3029;box-shadow:inset 0 1px 2px rgba(0,0,0,0.5),0 1px 0 rgba(255,255,255,0.12)">
+<div style="border-radius:8px;background:linear-gradient(180deg,#e4e5e0 0%,#d9dad4 100%);box-shadow:inset 0 2px 5px rgba(0,0,0,0.18);padding:7% 0 6%;display:flex;flex-direction:column;align-items:center;gap:2px;color:#151715">
+<span class="dm-txt" style="font-weight:500;font-size:clamp(30px,9vw,46px);line-height:1.15;letter-spacing:0.01em;padding:6% 0">Loading</span>
+</div>
+</div>
+<div style="flex:1;display:flex;align-items:center;justify-content:center">
+<div style="width:84px;height:84px;border-radius:50%;background:#1d3a2f;box-shadow:inset 0 3px 6px rgba(0,0,0,0.45),0 1px 0 rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center">
+<button tabindex="-1" aria-hidden="true" style="width:68px;height:68px;border-radius:50%;border:none;background:radial-gradient(circle at 40% 32%,#3c6c57 0%,#2b5444 55%,#22473a 100%);box-shadow:0 3px 0 #18332a,0 5px 8px rgba(0,0,0,0.35),inset 0 1px 1px rgba(255,255,255,0.2)"></button>
+</div>
+</div>
+<div style="width:86%;height:9px;margin-bottom:5%;border-radius:5px;background:#10221b;box-shadow:inset 0 2px 3px rgba(0,0,0,0.7),0 1px 0 rgba(255,255,255,0.12);position:relative">
+<div style="position:absolute;left:5%;right:5%;top:4px;height:96px;overflow:hidden;z-index:3;pointer-events:none"><div id="dm-lapp">Please wait</div></div>
+</div>
+</div>
+</div></div></div>
+<script>(function(){var d=document.documentElement;if(!d.classList.contains('intro'))return;var tf=0,fw=[];var ok=function(){if(tf)return;tf=Date.now();d.classList.add('dm-font');fw.forEach(function(f){f()})};if(document.fonts&&document.fonts.load){Promise.race([document.fonts.load('500 46px Archivo','Loading Please wait'),new Promise(function(r){setTimeout(r,1200)})]).then(ok,ok)}else ok();
+var t0=Date.now(),fired=false;function go(){if(!tf){fw.push(go);return}if(fired)return;fired=true;setTimeout(function(){var l=document.getElementById('dm-lapp');l.classList.add('tear');setTimeout(function(){var o=document.getElementById('dm-loader');d.classList.add('dm-ready');o.classList.add('done');setTimeout(function(){o.remove()},500)},600)},Math.max(0,1500-(Date.now()-t0),1200-(Date.now()-tf)))}
+var onload=function(){(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go)};if(document.readyState==='complete')onload();else window.addEventListener('load',onload);setTimeout(go,9000)})();</script>
+<script src="./support.js"></script>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f3f1eb;color:#1d201d;font-family:'Archivo',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#2f5a46;text-decoration:underline;text-underline-offset:3px}
+a:hover{color:#1d201d}
+img{display:block;max-width:100%}
+@keyframes printOut{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+@keyframes tearOff{from{transform:translateY(0);opacity:1}to{transform:translateY(24px) rotate(-4deg);opacity:0}}
+</style>
+</helmet>
+
+<section data-screen-label="01 Hero" style="position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#2a2a26;color:#f7f6f1">
+<img src="assets/hero-kjokken.png" alt="Datomaten på kjøleskapsdøren" style="position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:62% 40%">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,17,0) 35%,rgba(15,20,17,0.55) 70%,rgba(15,20,17,0.82) 100%)"></div>
+<div style="position:relative;max-width:1280px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 clamp(20px,4vw,48px) clamp(40px,7vh,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(20px,4vw,64px);align-items:end">
+<div style="display:flex;flex-direction:column;gap:24px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#cfe3d6">Produktkonsept · November 2025</span>
+<h1 style="margin:0;font-weight:900;font-size:clamp(56px,min(12vw,8.5vw + 40px),150px);line-height:0.9;letter-spacing:-0.035em;text-transform:uppercase">Dato&shy;maten</h1>
+</div>
+<p style="margin:0;font-size:clamp(20px,2vw,26px);line-height:1.35;max-width:30ch;text-wrap:pretty">En enkel liten printer som hjelper deg å holde oversikt over matvarene i kjøle- og fryseskapet.</p>
+</div>
+</section>
+
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;padding:28px 0 0;border-bottom:1px solid #d6d3cb;padding-bottom:28px;font-size:15px">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;color:#5d625c">Rolle</span><span>Konsept og produktdesign</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;color:#5d625c">Type</span><span>Fysisk produkt</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;color:#5d625c">Status</span><span>Søker finansiering</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;color:#5d625c">År</span><span>2025</span></div>
+</div>
+
+<section data-screen-label="02 Problemet" style="padding:clamp(72px,10vw,140px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,80px);align-items:center">
+<div style="display:flex;flex-direction:column;gap:24px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#2f5a46">01 — Problemet</span>
+<h2 style="margin:0;font-weight:700;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">Når vi åpner en matvare, mister vi kontroll på holdbarheten.</h2>
+<p style="margin:0;font-size:18px;line-height:1.55;color:#40453f;max-width:46ch;text-wrap:pretty">Mange stoler på datomerkingen for å vite om maten er spiselig. Men hvor lenge har den åpnede syltetøyglassen egentlig stått der? Og når ble restene satt inn?</p>
+</div>
+<figure style="margin:0;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:#dcd9d1">
+<img src="assets/kimchi.png" alt="Glass med kimchi merket med startdato" style="width:100%;height:100%;object-fit:cover">
+</figure>
+</section>
+
+<section data-screen-label="03 Løsningen" style="margin:0 calc(-1 * clamp(20px,4vw,48px));padding:clamp(72px,10vw,140px) clamp(20px,4vw,48px);background:#24443a;color:#f3f1eb;border-radius:6px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,80px);align-items:center">
+<figure style="margin:0;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:#d9d9d9">
+<img src="assets/produkt.png" alt="Datomaten med utskrevet dato" style="width:100%;height:100%;object-fit:cover">
+</figure>
+<div style="display:flex;flex-direction:column;gap:24px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#b9d3c3">02 — Løsningen</span>
+<h2 style="margin:0;font-weight:900;font-size:clamp(40px,5.5vw,76px);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase">Én knapp.<br>Én funksjon.</h2>
+<p style="margin:0;font-size:18px;line-height:1.55;color:#dbe4dd;max-width:44ch;text-wrap:pretty">Datomaten henger magnetisk på kjøleskapet og viser tid og dato. Trykk på knappen, og den printer dagens dato på en liten klistrelapp. Det er alt.</p>
+<div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #4b6a5f;margin-top:8px">
+<sc-for list="{{ uses }}" as="u" hint-placeholder-count="5">
+<div style="display:flex;gap:20px;padding:14px 0;border-bottom:1px solid #4b6a5f;font-size:17px"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#b9d3c3;padding-top:3px">{{ u.n }}</span><span>{{ u.t }}</span></div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="04 Prøv" style="padding:clamp(72px,10vw,120px) 0 0;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#2f5a46">Prøv selv</span>
+<div style="display:flex;flex-direction:column;align-items:center">
+<div style="width:min(380px,86vw);aspect-ratio:1.28/1;box-sizing:border-box;border-radius:36px;background:linear-gradient(165deg,#3a6a55 0%,#2d5746 38%,#244839 100%);box-shadow:inset 0 2px 1px rgba(255,255,255,0.18),inset 0 -3px 6px rgba(0,0,0,0.25),inset 3px 0 6px rgba(255,255,255,0.05),0 6px 0 #1b3a2e,0 7px 1px rgba(0,0,0,0.25),0 40px 60px -24px rgba(20,40,30,0.55),0 14px 24px -10px rgba(20,40,30,0.35);padding:7% 8% 0;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2">
+<div style="position:absolute;right:-3px;top:46%;width:4px;height:26px;border-radius:2px;background:#183128"></div>
+<div style="width:100%;box-sizing:border-box;padding:5px;border-radius:12px;background:#1b3029;box-shadow:inset 0 1px 2px rgba(0,0,0,0.5),0 1px 0 rgba(255,255,255,0.12)">
+<div style="border-radius:8px;background:linear-gradient(180deg,#e4e5e0 0%,#d9dad4 100%);box-shadow:inset 0 2px 5px rgba(0,0,0,0.18);padding:7% 0 6%;display:flex;flex-direction:column;align-items:center;gap:2px;color:#151715">
+<span style="font-weight:500;font-size:clamp(40px,12vw,60px);line-height:1;letter-spacing:0.01em;font-variant-numeric:tabular-nums">{{ time }}</span>
+<span style="font-size:clamp(15px,4.4vw,20px);letter-spacing:0.01em">{{ dateLong }}</span>
+</div>
+</div>
+<div style="flex:1;display:flex;align-items:center;justify-content:center">
+<div style="width:84px;height:84px;border-radius:50%;background:#1d3a2f;box-shadow:inset 0 3px 6px rgba(0,0,0,0.45),0 1px 0 rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center">
+<button onClick="{{ print }}" aria-label="Print dagens dato" style="width:68px;height:68px;border-radius:50%;border:none;cursor:pointer;background:radial-gradient(circle at 40% 32%,#3c6c57 0%,#2b5444 55%,#22473a 100%);box-shadow:0 3px 0 #18332a,0 5px 8px rgba(0,0,0,0.35),inset 0 1px 1px rgba(255,255,255,0.2);transition:transform 80ms,box-shadow 80ms" style-active="transform:translateY(3px);box-shadow:0 0 0 #18332a,0 1px 2px rgba(0,0,0,0.35),inset 0 1px 1px rgba(255,255,255,0.15)"></button>
+</div>
+</div>
+<div style="width:86%;height:9px;margin-bottom:5%;border-radius:5px;background:#10221b;box-shadow:inset 0 2px 3px rgba(0,0,0,0.7),0 1px 0 rgba(255,255,255,0.12);position:relative">
+<div style="position:absolute;left:5%;right:5%;top:4px;height:96px;overflow:hidden;z-index:3;pointer-events:none">{{ label }}</div>
+</div>
+</div>
+</div>
+<p style="margin:0 auto;width:100%;text-align:center;align-self:center;font-size:15px;color:#5d625c;transition:opacity 0.3s;opacity:{{ hintOpacity }}">Trykk på knappen. {{ countText }}</p>
+</section>
+</sc-if>
+
+<section data-screen-label="05 I bruk" style="padding:clamp(72px,10vw,140px) 0 0;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:16px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#2f5a46">03 — I bruk</span>
+<h2 style="margin:0;font-weight:700;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-0.02em">Fra kjøleskap til fryser.</h2>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+<figure style="margin:0;border-radius:6px;overflow:hidden;aspect-ratio:3/2;grid-column:1/-1;background:#dcd9d1"><img src="assets/glass.png" alt="Glass med syltetøy merket med dato" style="width:100%;height:100%;object-fit:cover"></figure>
+<figure style="margin:0;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:#dcd9d1"><img src="assets/kjoleskap.png" alt="Kjøleskap med datomerkede bokser" style="width:100%;height:100%;object-fit:cover"></figure>
+<figure style="margin:0;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:#dcd9d1"><img src="assets/laks.png" alt="Matboks med laks merket med dato" style="width:100%;height:100%;object-fit:cover"></figure>
+<figure style="margin:0;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:#dcd9d1"><img src="assets/grid-gronn.png" alt="Datomaten i grønn utgave i ulike kjøkken" style="width:100%;height:100%;object-fit:cover"></figure>
+
+</div>
+</section>
+
+<section data-screen-label="06 Hvorfor" style="padding:clamp(72px,10vw,140px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,80px)">
+<div style="display:flex;flex-direction:column;gap:24px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#2f5a46">04 — Hvorfor</span>
+<h2 style="margin:0;font-weight:700;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">Innovasjonen ligger i simplisiteten.</h2>
+</div>
+<p style="margin:0;font-size:18px;line-height:1.55;color:#40453f;max-width:46ch;align-self:end;text-wrap:pretty">Datomaten gjør det lekende lett å holde oversikt over kjøle- og frysevarer. Det reduserer matsvinn, og sparer dermed også penger. Det finnes allerede printere som kan skrive dato på en lapp, men ingen som er så enkle.</p>
+</section>
+
+<section data-screen-label="07 Veien fremover" style="padding:0 0 clamp(72px,10vw,140px);display:flex;flex-direction:column;gap:32px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#2f5a46">05 — Veien fremover</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+<div style="background:#e9e6de;border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:40px;min-height:180px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#2f5a46">{{ s.n }}</span>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:700;font-size:20px;line-height:1.2">{{ s.t }}</span><span style="font-size:15px;line-height:1.5;color:#40453f;text-wrap:pretty">{{ s.d }}</span></div>
+</div>
+</sc-for>
+</div>
+<p style="margin:0;font-size:16px;color:#5d625c;max-width:60ch">I denne fasen er prosjektet lite tidkrevende og medfører svært liten risiko.</p>
+</section>
+
+<section data-screen-label="08 Kontakt" style="border-top:1px solid #d6d3cb;padding:clamp(56px,8vw,112px) 0;display:flex;flex-direction:column;gap:28px">
+<p style="margin:0;font-size:clamp(24px,3vw,38px);line-height:1.25;letter-spacing:-0.01em;max-width:32ch;text-wrap:pretty">Ønsker du å bidra i prosessen, vil jeg gjerne snakke med deg. Hvis ikke setter jeg stor pris på ærlige tilbakemeldinger.</p>
+<div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;font-family:'JetBrains Mono',monospace;font-size:14px">
+<span>— Nikolas Lysnes</span>
+<a href="https://datomaten.no">Datomaten.no</a>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { now: new Date(), prints: 0, phase: null };
+  componentDidMount() { this.t = setInterval(() => this.setState({ now: new Date() }), 10000); }
+  componentWillUnmount() { clearInterval(this.t); clearTimeout(this.a); clearTimeout(this.b); }
+  doPrint() {
+    clearTimeout(this.a); clearTimeout(this.b);
+    this.setState(s => ({ prints: s.prints + 1, now: new Date(), phase: 'in' }));
+    this.a = setTimeout(() => this.setState({ phase: 'out' }), 4000);
+    this.b = setTimeout(() => this.setState({ phase: null }), 4600);
+  }
+  renderVals() {
+    const d = this.state.now, p = n => String(n).padStart(2, '0');
+    const days = ['Søn','Man','Tir','Ons','Tor','Fre','Lør'];
+    const date = `${p(d.getDate())}.${p(d.getMonth()+1)}.${d.getFullYear()}`;
+    const n = this.state.prints;
+    const ph = this.state.phase;
+    const label = !ph ? null : React.createElement('div', {
+      key: n,
+      style: { background: 'linear-gradient(180deg,#e2e2dd 0px,#f7f7f3 12px,#fbfbf8 100%)', padding: '30px 0 16px', animation: ph === 'out' ? 'tearOff 0.6s ease-in both' : 'printOut 0.9s cubic-bezier(.3,.7,.3,1) both', textAlign: 'center', fontFamily: "'Archivo',Helvetica,sans-serif", fontSize: 22, fontWeight: 500, color: '#151715', letterSpacing: '0.01em', borderRadius: '0 0 3px 3px', boxShadow: '0 8px 16px -8px rgba(0,0,0,0.3)' }
+    }, date);
+    return {
+      time: `${p(d.getHours())}:${p(d.getMinutes())}`,
+      dateLong: `${days[d.getDay()]} ${date}`,
+      label,
+      hintOpacity: ph ? 0 : 1,
+      countText: n ? `Lapp nr. ${n} printet.` : 'Datomaten printer dagens dato.',
+      print: () => this.doPrint(),
+      showDemo: this.props.showDemo ?? true,
+      uses: [
+        { n: 'A', t: 'Når du har åpnet en matvare' },
+        { n: 'B', t: 'Når du skal fryse noe' },
+        { n: 'C', t: 'Når du lagrer restemat' },
+        { n: 'D', t: 'Når du har sanket, jaktet eller fisket' },
+        { n: 'E', t: 'Når du har laget mat som skal lagres' }
+      ],
+      steps: [
+        { n: '01', t: 'Finansiering', d: 'Finansiere en minsteløsning.' },
+        { n: '02', t: 'Utvikling', d: 'Utvikle prototypen til et ferdig produkt.' },
+        { n: '03', t: 'Patent', d: 'Undersøke mulighetene for patent.' },
+        { n: '04', t: 'Salg', d: 'Selge inn til forhandlere som Jula, Biltema og Clas Ohlson, eller markedsføre organisk i sosiale medier.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

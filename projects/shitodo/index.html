@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>if(/[?&](cover|static)=1/.test(location.search))document.documentElement.classList.add("still");</script>
+<style>
+#sd-loader{position:fixed;inset:0;z-index:2147483647;background:#FBF8F1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .4s ease,visibility .4s}
+#sd-loader.done{opacity:0;visibility:hidden}
+html.still #sd-loader{display:none}
+html:not(.still):not(.sd-ready){overflow:hidden}
+#sd-loader .stage{position:relative;width:220px;height:220px}
+#sd-loader svg{position:absolute;inset:0;width:100%;height:100%}
+#sd-loader img{position:absolute;left:50%;top:50%;width:112px;height:112px;transform:translate(-50%,-50%);object-fit:contain;mix-blend-mode:multiply}
+#sd-loader .pct{font:700 13px "JetBrains Mono",ui-monospace,Menlo,monospace;color:#1C1B19;letter-spacing:.04em}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Shitodo turns your daily routines into a game you want to keep playing.">
+<link rel="icon" href="assets/logo.png">
+<title>Shitodo – small things, every day</title>
+<link media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Newsreader:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/landing.css">
+<style>
+:root{--p0:#FBF8F1;--p1:#F7F4EC;--p2:#F1ECE0;--p3:#E8E1D1;--p4:#D9D0BC;--ink:#1C1B19;--i1:#3A3833;--i2:#6B6862;--g:#3FA588;--gd:#2C7361;--gbg:#D6EBE3;--honey:#E8C547;--hbg:#F8EDC4;--terra:#E8765A;--tink:#B5482E}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--p0);color:var(--ink);font-family:"Plus Jakarta Sans",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--gd)}a:hover{color:var(--ink)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.eb{font:500 12px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--i2)}
+h1,h2,h3{margin:0;letter-spacing:-.03em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+em{font-family:"Newsreader",serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+.btn:hover{background:var(--ink);color:var(--p0)}
+.btn.pri{background:var(--ink);color:var(--p0)}.btn.pri:hover{background:var(--gd);border-color:var(--gd)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;letter-spacing:-.01em}
+.brand img{width:64px;height:64px;object-fit:contain}
+.nav .btn{height:42px;font-size:14px;padding:0 20px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;padding:24px 0 80px}
+.hero h1{font-size:clamp(52px,7.4vw,100px);font-weight:800;line-height:.95;margin:18px 0 24px}
+.hero h1 em{color:var(--gd);font-size:1.08em}
+.lead{font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--i1);max-width:26em}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-ph{position:relative;display:flex;justify-content:center;padding:20px 0}
+.blob{position:absolute;inset:6% 4%;border-radius:48% 52% 46% 54%/55% 45% 55% 45%;background:var(--hbg)}
+.ph{position:relative;flex:none;width:clamp(210px,23vw,280px);aspect-ratio:402/874;border-radius:clamp(30px,3.4vw,44px);background:var(--ink);padding:clamp(6px,.7vw,9px);box-shadow:0 40px 70px -34px rgba(28,27,25,.55)}
+.ph img{display:block;width:100%;height:100%;border-radius:clamp(24px,2.8vw,36px);object-fit:cover}
+.hero-ph .ph{transform:rotate(-3deg)}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--p3);border-radius:16px;padding:10px 14px 10px 10px;box-shadow:0 16px 30px -18px rgba(28,27,25,.45);font-size:14px;font-weight:700;z-index:2}
+.chip small{display:block;font:500 11px "JetBrains Mono";color:var(--i2);letter-spacing:.04em;margin-top:1px}
+.chip .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font:800 15px "JetBrains Mono"}
+.chip img{width:40px;height:40px;border-radius:10px;object-fit:cover;object-position:top}
+.c1{left:2%;top:22%}.c1 .ic{background:#FBE3D9;color:var(--tink)}
+.mascot{position:absolute;right:-6%;bottom:-4%;width:clamp(150px,19vw,250px);z-index:2;filter:drop-shadow(0 18px 24px rgba(28,27,25,.25))}
+.sec{padding:clamp(80px,10vw,128px) 0}
+.ttl{text-align:center;max-width:780px;margin:0 auto}
+.ttl h2{font-size:clamp(38px,5vw,64px);font-weight:800;line-height:1;margin-top:16px}
+.ttl h2 em{color:var(--gd)}
+.ttl p{font-size:19px;line-height:1.5;color:var(--i1);margin:20px auto 0;max-width:30em}
+.strip{display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:clamp(3px,.5vw,6px);margin:64px 0 18px}
+.strip i{aspect-ratio:1;border-radius:clamp(3px,.5vw,7px);background:var(--p3)}
+.strip i.d{background:var(--g)}.strip i.m{background:#F6DCD2}.strip i.t{background:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+.strip-l{display:flex;justify-content:space-between;font:500 12px "JetBrains Mono";color:var(--i2);letter-spacing:.06em;text-transform:uppercase}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:64px}
+.step{background:#fff;border:1px solid var(--p3);border-radius:24px;padding:28px 28px 30px}
+.step .n{font:500 30px "Newsreader";font-style:italic;color:var(--gd)}
+.step h3{font-size:22px;font-weight:800;margin:6px 0 6px}
+.step p{font-size:16px;line-height:1.5;color:var(--i2)}
+.game{background:var(--p2);border-radius:clamp(28px,4vw,48px);padding:clamp(48px,7vw,88px) clamp(24px,5vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.game h2{font-size:clamp(36px,4.6vw,58px);font-weight:800;line-height:1;margin-top:16px}
+.game h2 em{color:var(--tink)}
+.game p{font-size:18px;line-height:1.5;color:var(--i1);margin-top:18px}
+.bdg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.bdg img{display:block;width:100%;border-radius:18px;box-shadow:0 22px 40px -26px rgba(28,27,25,.5)}
+.bdg img:nth-child(odd){transform:rotate(-2deg)}.bdg img:nth-child(even){transform:rotate(2deg) translateY(28px)}
+.dev{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;margin-top:56px}
+.dev .lp-win{width:100%;border-radius:20px}
+.dev .ph{margin-left:-90px;margin-bottom:-36px;width:clamp(170px,19vw,240px)}
+.end{text-align:center;display:flex;flex-direction:column;align-items:center}
+.end img{width:150px;height:150px;object-fit:contain}
+.end blockquote{margin:12px 0 0;font:400 clamp(34px,4.6vw,58px)/1.1 "Newsreader",serif;font-style:italic;color:var(--i1);max-width:16em;text-wrap:balance}
+.end small{font:500 12px "JetBrains Mono";letter-spacing:.12em;text-transform:uppercase;color:var(--i2);margin-top:16px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:28px 0 36px;border-top:1px solid var(--p3);font:500 12px "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--i2)}
+@media (max-width:900px){
+.hero,.game{grid-template-columns:minmax(0,1fr)}
+.steps{grid-template-columns:minmax(0,1fr)}
+.dev{grid-template-columns:minmax(0,1fr)}
+.dev .ph{margin:-110px 0 0 auto;width:160px}
+.strip{grid-template-columns:repeat(15,minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+<div id="sd-loader" aria-label="Laster"><div class="stage"><svg viewBox="0 0 220 220"><circle cx="110" cy="110" r="96" fill="none" stroke="#E8E1D1" stroke-width="4"></circle><circle id="sd-arc" cx="110" cy="110" r="96" fill="none" stroke="#1C1B19" stroke-width="4" stroke-linecap="round" stroke-dasharray="603.19" stroke-dashoffset="603.19" transform="rotate(-90 110 110)"></circle></svg><img src="assets/shitodo-logo-v2.png" alt="Shitodo"></div><div class="pct" id="sd-pct">0%</div></div>
+<script>(function(){var d=document.documentElement;if(d.classList.contains('still'))return;var C=603.19,arc=document.getElementById('sd-arc'),pct=document.getElementById('sd-pct'),t0=performance.now(),v=0,ready=false,rt=0,rv=0,end=false;
+function set(x){arc.setAttribute('stroke-dashoffset',C*(1-x));pct.textContent=Math.round(x*100)+'%'}
+function tick(now){if(end)return;if(!ready){v=.92*(1-Math.exp(-(now-t0)/1400))}else{var k=Math.min(1,(now-rt)/220);v=rv+(1-rv)*k;if(k>=1){set(1);end=true;var l=document.getElementById('sd-loader');d.classList.add('sd-ready');l.classList.add('done');setTimeout(function(){l.remove()},450);return}}set(v);requestAnimationFrame(tick)}
+requestAnimationFrame(tick);
+function go(){if(ready)return;ready=true;rt=performance.now();rv=v}
+var onload=function(){(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go)};
+if(document.readyState==='complete')onload();else window.addEventListener('load',onload);setTimeout(go,9000)})();</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#F8EDC4"></rect><text x="50" y="64" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="42" fill="#1C1B19">S</text></svg></template>
+<header class="wrap" data-screen-label="01 Hero">
+<nav class="nav"><div class="brand"><img src="assets/logo.png" alt="">Shitodo</div></nav>
+<div class="hero">
+<div>
+<div class="eb">Routines, gamified</div>
+<h1>Get shit done. Every day.</h1>
+<p class="lead" style="width:525px;height:93px">Shitodo turns your daily routines into a game you want to keep playing. Win the game and you win in life</p>
+<div class="ctas"><a class="btn pri" href="prototype.html" data-proto="1">Try the prototype</a></div>
+</div>
+<div class="hero-ph"><div class="blob"></div>
+<img class="mascot" src="assets/mascot-perfect-week.png" alt="Shitodo mascot holding a Perfect week badge">
+<div class="ph"><img src="assets/screen-today.png" alt="Shitodo to-do screen"></div>
+</div>
+</div>
+</header>
+<section class="sec" style="background:#fff;border-top:1px solid var(--p3);border-bottom:1px solid var(--p3)" data-screen-label="02 Consistency">
+<div class="wrap">
+<div class="ttl"><div class="eb">Why it works</div><h2>Small things, <em>repeated</em>, changes everything.</h2><p>One good day gives you a taste of thriving.<br>A month of them makes it a way of life.</p></div>
+<div class="strip" id="strip"></div>
+<div class="strip-l"><span>Day 1</span><span>Day 30</span></div>
+<div class="steps">
+<div class="step"><div class="n">1.</div><h3>Show up</h3><p>Tick off today’s routines.</p></div>
+<div class="step"><div class="n">2.</div><h3>Keep the streak</h3><p>Every day in a row counts.</p></div>
+<div class="step"><div class="n">3.</div><h3>Earn the receipts</h3><p>Great days and weeks get rewarded.</p></div>
+</div>
+</div>
+</section>
+<section class="sec" data-screen-label="03 The game">
+<div class="wrap">
+<div class="game">
+<div><div class="eb">The game</div><h2>Rewards for <em style="color:#000000">staying</em> with it.</h2><p>Streaks, momentum and badges make consistency visible, so you can see your habits grow.</p></div>
+<div class="bdg"><img src="assets/badges/solid_day.png" alt="Solid day"><img src="assets/badges/perfect_day.png" alt="Perfect day"><img src="assets/badges/great_week.png" alt="Great week"><img src="assets/badges/perfect_week.png" alt="Perfect week"></div>
+</div>
+</div>
+</section>
+<section class="sec" style="padding-top:0" data-screen-label="04 Phone and desktop">
+<div class="wrap">
+<div class="ttl"><div class="eb">Desktop + phone</div><h2><em>Plan</em> at your desk.<br>Tick off on the go.</h2></div>
+<div class="dev"><div id="desk"></div><div class="ph"><img src="assets/screen-calendar.png" alt=""></div></div>
+</div>
+</section>
+<section class="sec" style="background:var(--hbg)" data-screen-label="05 Try it">
+<div class="wrap end">
+<img src="assets/logo.png" alt="Shitodo">
+<blockquote>«Well begun is half done.»</blockquote>
+<small>Aristotle</small>
+<div class="ctas"><a class="btn pri" href="prototype.html" data-proto="1">Try the prototype</a></div>
+</div>
+</section>
+<div class="wrap"><footer class="foot"><span>© 2026 Shitodo</span><span>Phone · Desktop</span></footer></div>
+<script src="js/landing-parts.js"></script>
+<script>
+document.getElementById('desk').innerHTML=LP.program();
+const pat='ddddmddddddmdddddddddddddddddt';
+document.getElementById('strip').innerHTML=[...pat].map(c=>`<i class="${c}"></i>`).join('');
+</script>
+</body>
+</html>

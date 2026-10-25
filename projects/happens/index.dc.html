@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>if(/[?&]cover=1/.test(location.search)){document.documentElement.classList.add("cover","still");document.write('<style>html.still *,html.still *::before,html.still *::after{animation:none!important;transition:none!important}html.still #hl-loader{display:none!important}html.still #hlogo .s,html.still #hlogo .dot{opacity:1!important;stroke-dashoffset:0!important;transform:none!important}</style>')}</script>
+<script>if(!/[?&]cover=1/.test(location.search))document.documentElement.classList.add("intro");</script>
+<style>
+html.intro:not(.go){overflow:hidden}
+html.intro{scrollbar-gutter:stable}
+html.intro [data-reveal],html.intro section:not([data-screen-label="Forside"]),html.intro footer{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+html.intro:not(.go) [data-reveal],html.intro:not(.go) section:not([data-screen-label="Forside"]),html.intro:not(.go) footer{opacity:0}
+html.intro:not(.go) [data-reveal]{transform:translateY(14px)}
+html.intro:not(.settled) #hswirl{animation:hlBreathe 2.2s ease-in-out infinite}
+#hl-dots{position:absolute;left:50%;transform:translateX(-50%);margin-top:28px;display:flex;gap:6px;font:500 12px ui-monospace,'JetBrains Mono',Menlo,monospace;letter-spacing:.18em;color:#B9B0FF;transition:opacity .4s ease;pointer-events:none}
+html:not(.intro) #hl-dots,html.go #hl-dots{opacity:0}
+#hl-dots span{animation:hlDot 1.2s infinite}#hl-dots span:nth-child(2){animation-delay:.2s}#hl-dots span:nth-child(3){animation-delay:.4s}
+@keyframes hlBreathe{0%,100%{transform:scale(1);filter:drop-shadow(0 0 40px rgba(106,44,255,.9))}50%{transform:scale(.9);filter:drop-shadow(0 0 70px rgba(120,110,255,1))}}
+@keyframes hlDot{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){#hswirl{animation:none!important}}
+</style>
+</head>
+<body>
+<script>(function(){var d=document.documentElement;if(!d.classList.contains('intro'))return;var t0=Date.now(),done=false;function settle(){if(done)return;done=true;var el=document.getElementById('hswirl');var fin=function(){d.classList.add('settled');d.classList.add('go')};if(!el){fin();return}var f=false;el.addEventListener('animationiteration',function h(){if(f)return;f=true;el.removeEventListener('animationiteration',h);fin()});setTimeout(function(){if(!f){f=true;fin()}},2400)}function ready(){setTimeout(settle,Math.max(0,900-(Date.now()-t0)))}var go=function(){(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ready)};if(document.readyState==='complete')go();else window.addEventListener('load',go);setTimeout(function(){d.classList.add('settled','go')},9000)})();</script>
+<script src="./support.js"></script>
+<x-dc>
+<helmet>
+<title>Happens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800;6..12,900&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;color:#fff;font-family:"Nunito Sans","Avenir Next",Avenir,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#63E6DC;text-decoration:none}a:hover{color:#fff}
+::selection{background:#6A2CFF;color:#fff}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4%,-3%) scale(1.08)}}
+@keyframes blink{50%{opacity:.25}}
+@keyframes floaty{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-10px)}}
+</style>
+</helmet>
+
+
+
+
+
+
+
+<section data-screen-label="Forside" style="position:relative;overflow:hidden;background:#000;min-height:100vh;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:96px 0 72px">
+  <div style="position:absolute;left:50%;top:38%;width:min(60vw,640px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:#6A2CFF;filter:blur(160px);opacity:.35;pointer-events:none"></div>
+  <div style="position:relative;max-width:900px;margin:0 auto;padding:0 40px">
+    <img id="hswirl" src="assets/happens-swirl.png" alt="" style="width:96px;display:block;margin:0 auto;filter:drop-shadow(0 0 40px rgba(106,44,255,.9))">
+    <div id="hl-dots" aria-hidden="true">LOADING<span>.</span><span>.</span><span>.</span></div>
+    <div data-reveal="" style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8f88a0;margin-top:48px">ALLE EVENTS I EN APP</div>
+    <h1 data-reveal="" style="margin:28px 0 0;line-height:0"><img src="assets/happens-logo.png" alt="Happens" style="width:min(80vw,720px);display:inline-block"></h1>
+    <p data-reveal="" style="font-size:clamp(18px,1.6vw,22px);line-height:1.45;margin:28px auto 0;max-width:420px;color:#c9c2d6;text-wrap:pretty">Happens er appen hvor du finner ut hva som skjer, hvor enn du er</p>
+  </div>
+  
+</section>
+
+<section data-screen-label="Historien" style="position:relative;overflow:hidden;background:#000;min-height:100vh;display:flex;align-items:center;padding:clamp(96px,14vw,180px) 0;border-top:1px solid #16131d">
+  <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:0 40px">
+    <div style="width:14px;height:14px;background:#E5208F"></div>
+    <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8f88a0;margin-top:36px">2016–2019</div>
+    <h2 style="font-size: clamp(44px,7vw,104px); font-weight: 900; letter-spacing: -.01em; line-height: .95; margin: 20px 0 0; background: linear-gradient(90deg,#8E4BFF,#63E6DC); -webkit-background-clip: text; background-clip: text; color: transparent; width: max-content; max-width: 100%">HISTORIEN</h2>
+    <p style="font-size:clamp(20px,2vw,28px);line-height:1.4;font-weight:600;margin:40px 0 0;max-width:720px;color:#fff;text-wrap:pretty">Happens var min første startup, og jeg ledet prosjektet fra idé til marked før vi avsluttet etter nesten fire år. Jeg hentet inn kapital fra offentlige ordninger og private investorer, og bygget et team på til sammen 16 personer som jobbet for Happens på ulike tidspunkt. Vi lanserte appen i sju norske byer, hadde på det meste 5 000 brukere i Norge og over 20 000 følgere på Instagram.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;margin-top:clamp(56px,8vw,96px)">
+      <div style="border-top:1px solid #2a2436;padding-top:20px"><div style="font-size:clamp(40px,5vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1">1,2 mill.</div><div style="font-size:15px;font-weight:600;color:#8f88a0;margin-top:10px">kroner hentet inn</div></div>
+      <div style="border-top:1px solid #2a2436;padding-top:20px"><div style="font-size:clamp(40px,5vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1">7</div><div style="font-size:15px;font-weight:600;color:#8f88a0;margin-top:10px">byer i Norge</div></div>
+      <div style="border-top:1px solid #2a2436;padding-top:20px"><div style="font-size:clamp(40px,5vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1">5 000+</div><div style="font-size:15px;font-weight:600;color:#8f88a0;margin-top:10px">brukere på det meste</div></div>
+      <div style="border-top:1px solid #2a2436;padding-top:20px"><div style="font-size:clamp(40px,5vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1">20 000+</div><div style="font-size:15px;font-weight:600;color:#8f88a0;margin-top:10px">følgere på Instagram</div></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Konseptet" style="position:relative;overflow:hidden;background:#000;min-height:100vh;display:flex;align-items:center;padding:clamp(96px,14vw,180px) 0;border-top:1px solid #16131d">
+  <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;align-items:center">
+    <img src="assets/happens-phone-5.png" alt="Happens-appen: kart med varme områder og eventer" style="width:115%;max-width:none;display:block;margin-left:-15%;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 26%);mask-image:linear-gradient(to right,transparent 0,#000 26%)">
+    <div>
+    <div style="width:14px;height:14px;background:#63E6DC"></div>
+    <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8f88a0;margin-top:36px">Kjernen</div>
+    <h2 style="font-size: clamp(44px,7vw,104px); font-weight: 900; letter-spacing: -.01em; line-height: .95; margin: 20px 0 0; background: linear-gradient(90deg,#8E4BFF,#63E6DC); -webkit-background-clip: text; background-clip: text; color: transparent; width: max-content; max-width: 100%">KONSEPTET</h2>
+    <p style="font-size:clamp(20px,2vw,28px);line-height:1.4;font-weight:600;margin:40px 0 0;max-width:560px;color:#fff;text-wrap:pretty">Alle skal kunne se hva de kan være med på, uansett hvor de er. Arrangører legger ut og promoterer eventene sine på Happens, og det er nettopp det som gir folk oversikten.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:clamp(40px,6vw,72px)">
+      <div style="border-top:1px solid #2a2436;padding-top:24px"><div style="width:12px;height:12px;background:#63E6DC;transform:rotate(45deg)"></div><div style="font-size:24px;font-weight:900;letter-spacing:-.01em;margin-top:20px">For folk</div><p style="font-size:17px;line-height:1.5;color:#c9c2d6;margin:10px 0 0;text-wrap:pretty">Et sosialt verktøy som gjør det lettere å samle venner, møte nye folk og faktisk dra på ting.</p></div>
+      <div style="border-top:1px solid #2a2436;padding-top:24px"><div style="width:12px;height:12px;background:#E5208F;transform:rotate(45deg)"></div><div style="font-size:24px;font-weight:900;letter-spacing:-.01em;margin-top:20px">For arrangører</div><p style="font-size:17px;line-height:1.5;color:#c9c2d6;margin:10px 0 0;text-wrap:pretty">Ett sted for eventside, billetter og markedsføring, uten å måtte lage egen nettside eller app.</p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Live updates" style="position:relative;overflow:hidden;background:#000;min-height:100vh;display:flex;align-items:center;padding:clamp(96px,14vw,180px) 0;border-top:1px solid #16131d">
+  <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:72px;align-items:center">
+    <div>
+      <div style="width:14px;height:14px;background:#E5208F"></div>
+      <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8f88a0;margin-top:36px">Live</div>
+      <h2 style="font-size: clamp(44px,7vw,104px); font-weight: 900; letter-spacing: -.01em; line-height: .95; margin: 20px 0 0; background: linear-gradient(90deg,#8E4BFF,#63E6DC); -webkit-background-clip: text; background-clip: text; color: transparent; width: max-content; max-width: 100%">LIVE UPDATES</h2>
+      <p style="font-size:clamp(18px,1.6vw,22px);line-height:1.45;margin:32px 0 0;max-width:380px;color:#c9c2d6;text-wrap:pretty">Folk deler bilder, video og kommentarer fra eventet mens det skjer. Da vet du hvordan det er der før du drar.</p>
+    </div>
+    <div style="position:relative;display:flex;justify-content:center;padding:40px 0">
+      <div style="position:absolute;left:50%;top:50%;width:80%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:#6A2CFF;filter:blur(110px);opacity:.45"></div>
+      <div style="position:relative;width:min(360px,72vw);animation:floaty 7s ease-in-out infinite">
+        <img src="assets/live.png" alt="Live-video fra et event i Happens" style="width:100%;display:block;border-radius:16px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 50px 90px -30px rgba(0,0,0,.95)">
+        <div style="position:absolute;left:16px;top:16px;display:flex;align-items:center;gap:8px;background:#E5208F;color:#fff;font-size:12px;font-weight:900;letter-spacing:.12em;padding:7px 12px 7px 10px;border-radius:999px"><span style="width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.2s steps(1) infinite"></span>LIVE</div>
+      
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Appen" style="position:relative;overflow:hidden;background:#000;padding:clamp(96px,14vw,180px) 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:48px;align-items:center">
+    <div>
+      <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#E5208F">Appen</div>
+      <h2 style="font-size:clamp(48px,6.4vw,96px);font-weight:900;letter-spacing:-.05em;line-height:.92;margin:24px 0 0">Se hva<br>som <span style="background:linear-gradient(90deg,#8E4BFF,#63E6DC);-webkit-background-clip:text;background-clip:text;color:transparent">skjer.</span></h2>
+      <p style="font-size:clamp(18px,1.6vw,22px);line-height:1.45;margin:32px 0 0;max-width:380px;color:#c9c2d6;text-wrap:pretty">Kartet lyser opp der det skjer. Zoom inn, trykk, og dra.</p>
+    </div>
+    <img src="assets/happens-phone-5.png" alt="Happens-appen: kart med varme områder og eventer" style="width:125%;max-width:none;display:block;margin-left:-10%;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 26%);mask-image:linear-gradient(to right,transparent 0,#000 26%)">
+  </div>
+</section>
+
+
+
+
+
+
+
+<section data-screen-label="Arrangører" style="position:relative;overflow:hidden;background:#5A0FC4;padding:clamp(110px,15vw,200px) 0">
+  <img src="assets/happens-marble-3.png" alt="" style="position:absolute;right:0;bottom:0;height:100%;max-width:62%;object-fit:cover;object-position:left bottom;-webkit-mask-image:linear-gradient(110deg,transparent 15%,#000 55%);mask-image:linear-gradient(110deg,transparent 15%,#000 55%);pointer-events:none">
+  <div style="position:absolute;left:40px;top:0;width:14px;height:14px;background:#63E6DC"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 40px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#63E6DC">For arrangører</div>
+    <h2 style="font-size:clamp(52px,8vw,124px);font-weight:900;letter-spacing:-.055em;line-height:.9;margin:28px 0 0;color:#63E6DC">Ingen nettside.<br>Ingen app.<br><span style="color:#fff">Bare Happens.</span></h2>
+    <p style="font-size:clamp(18px,1.6vw,22px);line-height:1.45;margin:40px 0 0;max-width:440px;color:#fff;text-wrap:pretty">Eventside, billetter, push-varsler og publikumsstatistikk på ett sted.</p>
+  </div>
+</section>
+
+<div style="background:#000;border-top:1px solid #16131d">
+  <footer style="position:relative;max-width:1240px;margin:0 auto;padding:40px 40px 36px;display:flex;justify-content:space-between;gap:16px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#5f596c"><span>Happens</span><span>2026</span></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script >
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

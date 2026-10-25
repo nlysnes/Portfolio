@@ -1,0 +1,73 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:"Plus Jakarta Sans",sans-serif;color:#1C1B19}
+a{color:#B5482E}a:hover{color:#1C1B19}
+.lp-eb{font:500 10px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B6862}
+.lp-q{margin:0}.lp-q blockquote{margin:0;font-family:"Newsreader",serif;font-style:italic;font-weight:400;color:#3A3833;line-height:1.15;text-wrap:balance}
+.lp-q figcaption{font:500 11px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6862;margin-top:16px}
+.lp-phone{width:280px;height:580px;border-radius:44px;background:#1C1B19;padding:10px;box-shadow:0 34px 60px -30px rgba(28,27,25,.55);flex:none}
+.lp-scr{height:100%;border-radius:34px;background:#FBF8F1;overflow:hidden;padding:14px 16px}
+.lp-sb{display:flex;justify-content:space-between;align-items:center;font:600 11.5px "Plus Jakarta Sans";padding:0 8px}
+.lp-isl{width:78px;height:22px;border-radius:999px;background:#1C1B19}
+.lp-nt{margin-top:14px;background:#fff;border:1px solid #E8E1D1;border-radius:16px;padding:10px 12px;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:center;box-shadow:0 10px 24px -12px rgba(28,27,25,.4)}
+.lp-nt img{width:30px;height:30px;object-fit:contain;mix-blend-mode:multiply}
+.lp-nt .h{display:flex;justify-content:space-between;font-size:11.5px}.lp-nt .h span{font-size:10.5px;color:#6B6862}
+.lp-nt p{margin:2px 0 0;font-size:12px;color:#3A3833}
+.lp-ph-h{margin:18px 2px 10px}
+.lp-big{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-top:4px}
+.lp-bar{height:6px;border-radius:999px;background:#E8E1D1;margin-top:10px;overflow:hidden}.lp-bar i{display:block;height:100%;background:#3FA588;border-radius:999px}
+.lp-li{display:flex;align-items:center;gap:10px;padding:9px 2px;border-top:1px solid #EFE9DC;font-size:13px;font-weight:600}
+.lp-li.on .n{color:#6B6862}
+.lp-cb{width:22px;height:22px;border-radius:6px;border:1.5px solid #BDB8AC;display:grid;place-items:center;flex:none;background:#fff}
+.lp-cb.on{background:#3FA588;border-color:#3FA588}
+.lp-str{margin-left:auto;display:flex;align-items:center;gap:3px;font:700 10.5px "JetBrains Mono";color:#B5482E}
+.lp-tm{margin-left:auto;font:500 10.5px "JetBrains Mono";color:#6B6862}
+.lp-win{background:#FBF8F1;border:1px solid #D9D0BC;border-radius:14px;overflow:hidden;box-shadow:0 34px 60px -36px rgba(28,27,25,.5)}
+.lp-wb{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid #E8E1D1;background:#F7F4EC}.lp-wb i{width:10px;height:10px;border-radius:50%;background:#D9D0BC}
+.lp-wc{padding:20px 24px 22px}
+.lp-wt{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:4px 0 14px}
+.lp-days{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-bottom:8px;border-bottom:1.5px solid #E8E1D1}
+.lp-cells{display:flex;gap:5px}
+.lp-cells span{width:32px;text-align:center;font:700 9px "JetBrains Mono";letter-spacing:.06em;color:#6B6862}
+.lp-sh{font:700 10px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;color:#6B6862;height:43px;display:flex;align-items:center;border-bottom:1px solid #EFE9DC}
+.lp-r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:5px 0;border-bottom:1px solid #EFE9DC}
+.lp-r .n{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;min-width:0;white-space:nowrap;overflow:hidden}
+.lp-r .n i{width:6px;height:6px;border-radius:50%;flex:none}
+.lp-r .iv{display:block;font:500 9.5px "JetBrains Mono";color:#6B6862}
+.lp-c{width:32px;height:32px;border-radius:8px;display:grid;place-items:center}
+.lp-c.m{background:#F3F0E9;border:1px solid #D9D0BC}.lp-c.dn{background:#3FA588;border:1px solid #2C7361}.lp-c.cv{background:#D6EBE3;border:1px solid #9CCBBC}.lp-c.td{background:#fff;border:2px solid #6B6862}.lp-c.fu{background:#FFFCF5;border:1px solid #E8E1D1}
+.lp-card{background:#fff;border:1px solid #D9D0BC;border-radius:18px;padding:22px 24px}
+.lp-stk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:18px;border-bottom:1px solid #EFE9DC}
+.lp-stk .v{font:700 24px "JetBrains Mono";margin-top:6px;display:flex;align-items:center;gap:6px}.lp-stk small{font:500 12px "Plus Jakarta Sans";color:#6B6862;margin-left:2px}
+.lp-rings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px 0;border-bottom:1px solid #EFE9DC;text-align:center}
+.lp-ring{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin:0 auto}.lp-ring b{width:62px;height:62px;border-radius:50%;background:#fff;display:grid;place-items:center;font:700 15px "JetBrains Mono"}
+.lp-rings .rl{font-size:11.5px;color:#6B6862;margin-top:8px}
+.lp-areas{display:flex;flex-direction:column;gap:10px;padding-top:18px}
+.lp-ar{display:grid;grid-template-columns:86px 1fr 40px;gap:10px;align-items:center;font-size:12.5px}
+.lp-ab{height:8px;border-radius:999px;background:#E8E1D1;overflow:hidden}.lp-ab i{display:block;height:100%;border-radius:999px}
+.lp-ar .vv{font:700 11.5px "JetBrains Mono";text-align:right}
+.lp-bdg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding-top:8px}
+.lp-b{text-align:center}.lp-b .pic{position:relative}
+.lp-b img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 0 0 2px #3FA588}
+.lp-b.p img{filter:grayscale(.75);opacity:.8;box-shadow:0 0 0 2px #E8C547}
+.lp-b .ct{position:absolute;top:-9px;right:-9px;min-width:28px;height:28px;padding:0 6px;border-radius:999px;background:#3FA588;color:#fff;font:700 11px "JetBrains Mono";display:grid;place-items:center;border:2px solid #fff}
+.lp-b .tg{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);white-space:nowrap;font:700 8.5px "JetBrains Mono";letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:999px;background:#3FA588;color:#fff}
+.lp-b.p .tg{background:#E8C547;color:#1C1B19}
+.lp-b .nm{font-size:11.5px;font-weight:700;margin-top:16px}
+.frame{position:absolute}
+.flabel{display:block;font:500 13px "JetBrains Mono";letter-spacing:.06em;text-transform:uppercase;color:#6B6862;margin-bottom:12px}.flabel b{color:#1C1B19}
+.L{width:1280px;background:#FBF8F1;border:1px solid #D9D0BC;overflow:hidden}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:24px 56px}
+.brandS{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:-.01em}.brandS img{width:40px;height:40px;object-fit:contain;mix-blend-mode:multiply}
+.links{display:flex;gap:10px;align-items:center}
+.btn{padding:11px 18px;border-radius:10px;font:600 14px "Plus Jakarta Sans";border:1px solid #D9D0BC;background:#FBF8F1;color:#1C1B19;text-decoration:none;display:inline-flex}
+.btn.pri{background:#1C1B19;border-color:#1C1B19;color:#fff}
+.btn.lg{padding:15px 26px;font-size:15.5px}
+.navlink{font-size:14px;font-weight:500;color:#3A3833;text-decoration:none;padding:0 8px}
+.h1{font-weight:800;letter-spacing:-.045em;line-height:.95;margin:0}
+.lead{font-size:19px;line-height:1.5;color:#3A3833;max-width:540px;margin:0;text-wrap:pretty}
+.plat{font:500 11px "JetBrains Mono";letter-spacing:.12em;text-transform:uppercase;color:#6B6862}
+.ft .num{font:700 11px "JetBrains Mono";color:#6B6862;letter-spacing:.08em}
+.ft h4{margin:6px 0 0;font-size:21px;font-weight:800;letter-spacing:-.015em}
+.ft p{margin:6px 0 0;font-size:15px;color:#6B6862;line-height:1.45;text-wrap:pretty;max-width:380px}
+.foot{padding:26px 56px;border-top:1px solid #E8E1D1;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#6B6862}
+.tile{border-radius:24px;padding:32px;overflow:hidden;position:relative}.t-c{background:#F1ECE0}.t-w{background:#fff;border:1px solid #E8E1D1}

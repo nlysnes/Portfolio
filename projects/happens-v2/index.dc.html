@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>if(/[?&]cover=1/.test(location.search)){document.documentElement.classList.add("cover","still");document.write('<style>html.still *,html.still *::before,html.still *::after{animation:none!important;transition:none!important}html.still #hl-loader{display:none!important}html.still #hlogo .s,html.still #hlogo .dot{opacity:1!important;stroke-dashoffset:0!important;transform:none!important}</style>')}</script>
+<script>if(!/[?&]cover=1/.test(location.search))document.documentElement.classList.add("intro");</script>
+<script>if(/[?&]cover=1/.test(location.search))document.documentElement.classList.add("cover");</script>
+<style>html.cover,html.cover body{overflow:hidden;scrollbar-width:none}html.cover ::-webkit-scrollbar{display:none}html.cover section#top>div{min-height:100vh!important}
+html.intro:not(.cover){scrollbar-gutter:stable}
+html.intro:not(.go){overflow:hidden}
+html.intro [data-reveal],html.intro section:not(#top),html.intro footer{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+html.intro:not(.go) [data-reveal],html.intro:not(.go) section:not(#top),html.intro:not(.go) footer{opacity:0}
+html.intro:not(.go) [data-reveal]{transform:translateY(14px)}
+#hlogo{width:clamp(220px,min(30vw,40vh),420px);height:auto;overflow:visible}
+#hlogo .s{fill:none;stroke:#141617;stroke-width:11.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2;stroke-dashoffset:1;animation-fill-mode:both}
+#hlogo .s1{animation:hlS 0.739s linear .2s both}
+#hlogo .s2{animation:hlS 0.522s cubic-bezier(.33,.5,.6,1) .939s both}
+#hlogo .dot{fill:#141617;transform-box:fill-box;transform-origin:center;animation:hlDot .217s cubic-bezier(.3,1.4,.5,1) 1.504s both}
+@keyframes hlS{0%{opacity:0;stroke-dashoffset:1}1%{opacity:1;stroke-dashoffset:1}100%{opacity:1;stroke-dashoffset:0}}
+@keyframes hlDot{0%{opacity:0;transform:scale(0)}1%{opacity:1;transform:scale(0)}70%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){#hlogo .s,#hlogo .dot{animation:none;opacity:1;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<script>(function(){var t0=Date.now(),loaded=false;function go(){document.documentElement.classList.add('go')}function check(){if(!loaded)return;setTimeout(go,Math.max(0,1950-(Date.now()-t0)))}function onload(){(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){loaded=true;check()})}if(document.readyState==='complete')onload();else window.addEventListener('load',onload);setTimeout(go,8000)})();</script>
+<script src="./support.js"></script>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#141617;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}a{color:#2EE6B6;text-decoration:none}a:hover{color:#F21EA0}img{display:block}</style>
+</helmet>
+
+
+
+<section id="top" data-screen-label="01 Ny Happens" style="background:#fff;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;min-height:calc(100svh - 64px);box-sizing:border-box;padding:clamp(24px,4vh,56px) clamp(20px,5vw,72px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(12px,2.4vh,28px)">
+    <div data-reveal="" style="font-size:clamp(13px,1.2vw,17px);font-weight:600;letter-spacing:5px;color:#F21EA0">NY HAPPENS · NY IDENTITET</div>
+    
+    <svg id="hlogo" viewBox="31 65 284 207" role="img" aria-label="happens" style="margin:clamp(16px,4vh,56px) 0"><g transform="translate(2,3)"><path class="s s1" pathLength="1" d="M120,153 C165,141 222,125 243,105 C258,90 250,68 231,68 C214,68 203,84 193,100 L97,253"></path><path class="s s2" pathLength="1" d="M144,178 C160,162 194,153 202,172 C208,188 182,215 180,238 C178,258 198,268 215,255 C225,247 232,238 236,230"></path><circle class="dot" cx="247" cy="207" r="6.2"></circle></g></svg>
+    <h1 data-reveal="" style="margin:0;max-width:1100px;font-size:clamp(36px,min(6vw,9vh),96px);line-height:1;font-weight:800;letter-spacing:-0.025em;color:#141617;text-wrap:balance">Arrangørens egen app.</h1>
+    <p data-reveal="" style="margin:0;max-width:760px;font-size:clamp(18px,1.7vw,26px);line-height:1.5;font-weight:500;color:#3a3d40;text-wrap:pretty">Sterkere insentiver for at arrangørene selv skal ta kontroll over innholdet i Happens.</p>
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px">
+      <a href="#opprett" style="padding:14px 26px;border-radius:999px;background:#141617;color:#fff;font-size:17px;font-weight:600">Opprett</a>
+      <a href="#profiler" style="padding:14px 26px;border-radius:999px;background:#2EE6B6;color:#141617;font-size:17px;font-weight:600">Profiler</a>
+      <a href="#promoter" style="padding:14px 26px;border-radius:999px;background:#F21EA0;color:#fff;font-size:17px;font-weight:600">Promoter</a>
+    </div>
+  </div>
+  <div data-reveal="" style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+    <div style="background:#EDF2F7;border-radius:clamp(20px,2.4vw,36px) clamp(20px,2.4vw,36px) 0 0;overflow:hidden;display:flex;justify-content:center;padding:clamp(20px,3vw,48px) clamp(12px,3vw,48px) 0">
+      <img src="assets/v3/iso.jpg" alt="Happens-appen: plakatverktøy, kart, arrangementside og billett" style="width:100%;max-width:1200px;height:auto">
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 For arrangører" style="position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden;background:#0d0d10">
+  <img src="assets/v3/photo-crowd.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,14,.9) 0%,rgba(10,8,14,.55) 55%,rgba(10,8,14,.1) 100%)"></div>
+  
+</section>
+
+<section id="opprett" data-screen-label="03 Opprett" style="background:#141617">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:clamp(40px,5vw,72px)">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:900px">
+      <div style="font-size:clamp(14px,1.4vw,20px);font-weight:600;letter-spacing:5px;color:#2EE6B6">01 · OPPRETT</div>
+      <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;color:#fff;text-wrap:balance">Fra bilde til arrangement i fire steg.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(24px,3vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);outline:1px solid rgba(255,255,255,.08);max-width:320px"><img src="assets/v3/s-create.jpg" alt="" style="width:100%;height:auto"></div>
+        <div style="color:#fff;font-size:20px;font-weight:500;line-height:1.35"><b style="color:#2EE6B6">1</b>  Legg til bilde eller video</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);outline:1px solid rgba(255,255,255,.08);max-width:320px"><img src="assets/v3/s-filter.jpg" alt="" style="width:100%;height:auto"></div>
+        <div style="color:#fff;font-size:20px;font-weight:500;line-height:1.35"><b style="color:#2EE6B6">2</b>  Velg form, filter og gradient</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);outline:1px solid rgba(255,255,255,.08);max-width:320px"><img src="assets/v3/s-title.jpg" alt="" style="width:100%;height:auto"></div>
+        <div style="color:#fff;font-size:20px;font-weight:500;line-height:1.35"><b style="color:#2EE6B6">3</b>  Tittel, dato og sted</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);outline:1px solid rgba(255,255,255,.08);max-width:320px"><img src="assets/v3/s-publish.jpg" alt="" style="width:100%;height:auto"></div>
+        <div style="color:#fff;font-size:20px;font-weight:500;line-height:1.35"><b style="color:#2EE6B6">4</b>  Publiser</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="profiler" data-screen-label="04 Profiler" style="background:#2EE6B6;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,5vw,80px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="font-size:clamp(14px,1.4vw,20px);font-weight:600;letter-spacing:5px;color:#141617">02 · PROFILER</div>
+      <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;color:#141617;text-wrap:balance">Arrangøren får en scene i appen.</h2>
+      <p style="margin:0;font-size:clamp(18px,1.6vw,24px);line-height:1.55;font-weight:500;color:#141617;max-width:560px;text-wrap:pretty">Denne versjonen av Happens skulle gi arrangørene en egen app og nettside for virksomheten og arrangementene sine. Der kunne de organisere arrangementer, lage reklamemateriell, selge billetter og mer.</p>
+      <p style="margin:0;font-size:clamp(18px,1.6vw,24px);line-height:1.55;font-weight:500;color:#141617;max-width:560px;text-wrap:pretty">Tidligere la ikke arrangørene inn innholdet selv, og kvaliteten ble deretter. Nå skulle de eie innholdet, og når de promoterte arrangementet sitt i andre kanaler, promoterte de også Happens.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,40px);align-items:start;max-width:680px">
+      <div style="border-radius:36px;overflow:hidden;box-shadow:0 30px 70px rgba(10,60,50,.35)"><img src="assets/v3/s-profile.jpg" alt="Arrangørprofil" style="width:100%;height:auto"></div>
+      <div style="border-radius:36px;overflow:hidden;box-shadow:0 30px 70px rgba(10,60,50,.35);margin-top:clamp(24px,4vw,64px)"><img src="assets/v3/s-event.jpg" alt="Arrangementside" style="width:100%;height:auto"></div>
+    </div>
+  </div>
+</section>
+
+<section id="promoter" data-screen-label="05 Promoter" style="background:#fff">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,5vw,80px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="font-size:clamp(14px,1.4vw,20px);font-weight:600;letter-spacing:5px;color:#F21EA0">03 · PROMOTER</div>
+      <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;color:#141617;text-wrap:balance">Plakaten er reklamen.</h2>
+      <p style="margin:0;font-size:clamp(18px,1.6vw,24px);line-height:1.55;font-weight:500;color:#3a3d40;max-width:560px;text-wrap:pretty">Det arrangøren lager i appen, er ferdig markedsmateriell. Del det i sosiale medier, heng det opp eller bruk det som annonse.</p>
+      <p style="margin:0;font-size:clamp(18px,1.6vw,24px);line-height:1.55;font-weight:500;color:#3a3d40;max-width:560px;text-wrap:pretty">Forrige versjon hadde et rotete uttrykk og mye informasjon. Nå er stilen minimalistisk og enhetlig, og det visuelle sier mer enn teksten.<br><br>Arrangører som lager egne plakater, kan i tillegg bli trukket frem i vår daglige promotering i sosiale medier, der vi hadde over 20 000 følgere i Norge.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.2vw,18px)">
+      <img src="assets/v3/p-majik.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-festivali.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-bustout.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-carnival.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-hi.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-pug.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-nordic.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-bar.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+      <img src="assets/v3/p-poetry.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="06 Én plakat overalt" style="background:#FFF200">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:clamp(40px,5vw,72px)">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:900px">
+      <div style="font-size:clamp(14px,1.4vw,20px);font-weight:600;letter-spacing:5px;color:#141617">ÉN PLAKAT, OVERALT</div>
+      <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;color:#141617;text-wrap:balance">I feeden, på kartet, på billetten.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,56px)">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(120,90,0,.3);max-width:340px;aspect-ratio:640/1316"><img src="assets/v3/s-home.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="font-size:20px;font-weight:600;color:#141617">Forsiden</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(120,90,0,.3);max-width:340px;aspect-ratio:640/1316"><img src="assets/v3/s-map.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="font-size:20px;font-weight:600;color:#141617">Kartet</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(120,90,0,.3);max-width:340px;aspect-ratio:640/1316"><img src="assets/v3/s-ticket.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="font-size:20px;font-weight:600;color:#141617">Billetten</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="live" data-screen-label="07 Live" style="position:relative;background:#0d0d10;overflow:hidden">
+  <img src="assets/v3/photo-stage.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,16,.92) 0%,rgba(8,10,16,.65) 55%,rgba(8,10,16,.3) 100%)"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,5vw,80px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="font-size:clamp(14px,1.4vw,20px);font-weight:600;letter-spacing:5px;color:#2EE6B6">HAPPENINGS</div>
+      <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;color:#fff;text-wrap:balance">Promoteringen fortsetter mens det skjer.</h2>
+      <p style="margin:0;font-size:clamp(18px,1.6vw,24px);line-height:1.55;font-weight:500;color:#e6e8ec;max-width:560px;text-wrap:pretty">Arrangøren deler øyeblikk fra kvelden. Følgerne ser dem på kartet og i historier.</p>
+    </div>
+    <div style="border-radius:36px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);outline:1px solid rgba(255,255,255,.12);max-width:380px;width:100%;justify-self:center"><img src="assets/v3/s-story.jpg" alt="Live-historie" style="width:100%;height:auto"></div>
+  </div>
+</section>
+
+
+
+<footer data-screen-label="09 Avslutning" style="background:#141617;padding:clamp(80px,10vw,160px) clamp(20px,5vw,72px);display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+  <img src="assets/v3/logo-light.png" alt="happens" style="width:clamp(120px,14vw,200px);height:auto">
+  <img src="assets/v3/happens-script-white.png" alt="happens" style="width:min(360px,70vw);height:auto;aspect-ratio:800/320">
+  <div style="color:#9aa0a6;font-size:clamp(18px,1.8vw,26px);font-weight:500">Find out what happens next.</div>
+</footer>
+</x-dc>
+</body>
+</html>

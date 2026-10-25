@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Nikolas Lysnes – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Newsreader:ital,wght@1,400&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#F3F2EE;color:#161615;font-family:"Hanken Grotesk",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#161615}a:hover{color:#B4462A}
+input:focus{outline:none}
+</style>
+</helmet>
+
+<sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="00 Passord" style="min-height:100vh;display:grid;place-items:center;padding:32px 20px;background:#F3F2EE">
+  <form onSubmit="{{ submitPw }}" style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">Portfolio</div>
+      <h1 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,9vw,64px);line-height:.95;letter-spacing:-.035em">Nikolas Lysnes</h1>
+      <p style="margin:0;font-size:17px;line-height:1.5;color:#3E3D3A;text-wrap:pretty">Denne siden er passordbeskyttet. Passordet står i søknaden.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <label for="pw" style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#5F5E5A">Passord</label>
+      <div style="display:flex;gap:8px">
+        <input id="pw" type="password" autocomplete="current-password" value="{{ pwInput }}" onChange="{{ onPwChange }}" style="flex:1;min-width:0;height:52px;padding:0 18px;border-radius:999px;border:1.5px solid #161615;background:#fff;font:500 17px 'Hanken Grotesk',sans-serif;color:#161615">
+        <button type="submit" style="height:52px;padding:0 24px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 16px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Åpne</button>
+      </div>
+      <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:15px;color:#A33A20">Feil passord. Prøv igjen.</div>
+      </sc-if>
+    </div>
+  </form>
+</div>
+</sc-if>
+
+<sc-if value="{{ unlocked }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="position:sticky;top:0;z-index:10;background:rgba(243,242,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid #DEDCD5">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div onClick="{{ goProjects }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;cursor:pointer">Nikolas Lysnes</div>
+      <nav style="display:flex;align-items:center;gap:4px">
+        <button onClick="{{ goProjects }}" style="height:40px;padding:0 16px;border-radius:999px;border:0;cursor:pointer;font:600 15px 'Hanken Grotesk',sans-serif;background:{{ navProjBg }};color:{{ navProjFg }}">Prosjekter</button>
+        <button onClick="{{ goCv }}" style="height:40px;padding:0 16px;border-radius:999px;border:0;cursor:pointer;font:600 15px 'Hanken Grotesk',sans-serif;background:{{ navCvBg }};color:{{ navCvFg }}">CV</button>
+        <button onClick="{{ lock }}" title="Lås siden" style="height:40px;padding:0 14px;margin-left:8px;border-radius:999px;border:1px solid #DEDCD5;background:transparent;cursor:pointer;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#5F5E5A" style-hover="border-color:#161615;color:#161615">Lås</button>
+      </nav>
+    </div>
+  </header>
+
+  <sc-if value="{{ isProjects }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="01 Prosjekter" style="flex:1;max-width:1240px;width:100%;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,48px) 96px">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:760px">
+      <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">Utvalgte prosjekter</div>
+      <h1 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,7vw,88px);line-height:.95;letter-spacing:-.04em;text-wrap:balance">Konsepter, produkter og prototyper.</h1>
+      <p style="margin:0;font-size:clamp(17px,1.5vw,19px);line-height:1.5;color:#3E3D3A;max-width:34em;text-wrap:pretty">Klikk på et prosjekt for å se hele presentasjonen.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(40px,6vw,72px);margin-top:clamp(48px,6vw,80px)">
+
+      <article style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);align-items:center">
+        <div onClick="{{ openHa }}" ref="{{ stageHaRef }}" style="position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;cursor:pointer;background:#1B0A41;box-shadow:0 30px 60px -40px rgba(22,22,21,.5);flex:1.7 1 480px;min-width:0" style-hover="box-shadow:0 36px 70px -36px rgba(22,22,21,.6)">
+          <iframe src="projects/happens/index.dc.html?cover=1" loading="lazy" scrolling="no" tabindex="-1" title="Happens" style="position:absolute;top:0;left:0;width:1440px;height:900px;border:0;pointer-events:none;transform-origin:0 0;transform:scale({{ scaleHa }})"></iframe>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 300px">
+          <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">01 · Startup · 2016–2019</div>
+          <h2 onClick="{{ openHa }}" style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.035em;cursor:pointer">Happens</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Min første startup: en app for å finne ut hva som skjer, hvor enn du er. Jeg ledet prosjektet fra idé til marked, hentet inn 1,2 millioner kroner og bygget et team på 16 personer. Appen ble lansert i sju norske byer.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Gründer</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Produkt</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Ledelse</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">App</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <button onClick="{{ openHa }}" style="height:48px;padding:0 22px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Se presentasjonen →</button>
+          </div>
+        </div>
+      </article>
+
+      <div style="height:1px;background:#DEDCD5"></div>
+
+      <article style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);align-items:center">
+        <div onClick="{{ openH2 }}" ref="{{ stageH2Ref }}" style="position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;cursor:pointer;background:#fff;box-shadow:0 30px 60px -40px rgba(22,22,21,.5);flex:1.7 1 480px;min-width:0" style-hover="box-shadow:0 36px 70px -36px rgba(22,22,21,.6)">
+          <iframe src="projects/happens-v2/index.dc.html?cover=1" loading="lazy" scrolling="no" tabindex="-1" title="Happens v2" style="position:absolute;top:0;left:0;width:1440px;height:900px;border:0;pointer-events:none;transform-origin:0 0;transform:scale({{ scaleH2 }})"></iframe>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 300px">
+          <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">02 · Videreutvikling · 2020</div>
+          <h2 onClick="{{ openH2 }}" style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.035em;cursor:pointer">Happens v2</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Ny identitet og nytt konsept for Happens: arrangørens egen app, der arrangører oppretter, profilerer og promoterer sine egne eventer. Konseptet ble utviklet og finansieringen var nær, men prosjektet stoppet da covid-pandemien slo til.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Konsept</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Merkevare</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">UX/UI</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">App</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <button onClick="{{ openH2 }}" style="height:48px;padding:0 22px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Se presentasjonen →</button>
+          </div>
+        </div>
+      </article>
+
+      <div style="height:1px;background:#DEDCD5"></div>
+
+      <article style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);align-items:center">
+        <div onClick="{{ openWa }}" ref="{{ stageWaRef }}" style="position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;cursor:pointer;background:#f6f5f2;border:1px solid #E7E2D6;box-shadow:0 30px 60px -40px rgba(22,22,21,.5);flex:1.7 1 480px;min-width:0" style-hover="box-shadow:0 36px 70px -36px rgba(22,22,21,.6)">
+          <iframe src="projects/workability/index.dc.html?cover=1" loading="lazy" scrolling="no" tabindex="-1" title="Workability" style="position:absolute;top:0;left:0;width:1440px;height:900px;border:0;pointer-events:none;transform-origin:0 0;transform:scale({{ scaleWa }})"></iframe>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 300px">
+          <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">03 · Digital tjeneste · 2020</div>
+          <h2 onClick="{{ openWa }}" style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.035em;cursor:pointer">Workability</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">En digital tjeneste for å redusere sykefravær gjennom bedre kommunikasjon og tilrettelegging ved sykdom og skade. Jeg hadde ansvar for design og interaksjonsdesign, fra idé til ferdig tjeneste.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Interaksjonsdesign</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">UX/UI</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Brukerreiser</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <button onClick="{{ openWa }}" style="height:48px;padding:0 22px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Se presentasjonen →</button>
+          </div>
+        </div>
+      </article>
+
+      <div style="height:1px;background:#DEDCD5"></div>
+
+      <article onMouseEnter="{{ pauseSh }}" onMouseLeave="{{ resumeSh }}" style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);align-items:center">
+        <div onClick="{{ openSh }}" ref="{{ stageShRef }}" style="position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;cursor:pointer;container-type:inline-size;background:#F8EDC4;box-shadow:0 30px 60px -40px rgba(22,22,21,.5);flex:1.7 1 480px;min-width:0" style-hover="box-shadow:0 36px 70px -36px rgba(22,22,21,.6)">
+          <div style="position:absolute;inset:0;background:#F8EDC4;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;padding:0 0 0 7cqw;transition:opacity .6s ease;opacity:{{ sh0 }}">
+            <div style="display:flex;flex-direction:column;gap:2cqw">
+              <img src="projects/shitodo/assets/logo.png" alt="" style="width:9cqw;height:9cqw;object-fit:contain">
+              <div style="font:800 6.4cqw/0.95 'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;color:#1C1B19">Get shit done. Every day.</div>
+              <div style="font:400 1.9cqw/1.4 'Plus Jakarta Sans',sans-serif;color:#3A3833;max-width:22em">Daglige rutiner gjort om til et spill.</div>
+            </div>
+            <img src="projects/shitodo/assets/mascot-perfect-week.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:center bottom;padding-top:4cqw">
+          </div>
+          <div style="position:absolute;inset:0;background:#D6EBE3;display:flex;justify-content:center;align-items:center;gap:5cqw;transition:opacity .6s ease;opacity:{{ sh1 }}">
+            <div style="width:19cqw;aspect-ratio:402/874;border-radius:3cqw;background:#1C1B19;padding:.6cqw;transform:rotate(-4deg) translateY(2cqw);box-shadow:0 3cqw 5cqw -2.5cqw rgba(28,27,25,.55)"><img src="projects/shitodo/assets/screen-today.png" alt="" style="display:block;width:100%;height:100%;border-radius:2.5cqw;object-fit:cover"></div>
+            <div style="width:19cqw;aspect-ratio:402/874;border-radius:3cqw;background:#1C1B19;padding:.6cqw;transform:rotate(3deg) translateY(-1cqw);box-shadow:0 3cqw 5cqw -2.5cqw rgba(28,27,25,.55)"><img src="projects/shitodo/assets/screen-calendar.png" alt="" style="display:block;width:100%;height:100%;border-radius:2.5cqw;object-fit:cover"></div>
+          </div>
+          <div style="position:absolute;inset:0;background:#F1ECE0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2.4cqw;align-items:center;padding:0 6cqw;transition:opacity .6s ease;opacity:{{ sh2 }}">
+            <img src="projects/shitodo/assets/badges/solid_day.png" alt="" style="width:100%;border-radius:1.6cqw;transform:rotate(-3deg);box-shadow:0 2cqw 3cqw -2cqw rgba(28,27,25,.5)">
+            <img src="projects/shitodo/assets/badges/perfect_day.png" alt="" style="width:100%;border-radius:1.6cqw;transform:rotate(2deg) translateY(3cqw);box-shadow:0 2cqw 3cqw -2cqw rgba(28,27,25,.5)">
+            <img src="projects/shitodo/assets/badges/great_week.png" alt="" style="width:100%;border-radius:1.6cqw;transform:rotate(-2deg);box-shadow:0 2cqw 3cqw -2cqw rgba(28,27,25,.5)">
+            <img src="projects/shitodo/assets/badges/perfect_week.png" alt="" style="width:100%;border-radius:1.6cqw;transform:rotate(3deg) translateY(3cqw);box-shadow:0 2cqw 3cqw -2cqw rgba(28,27,25,.5)">
+          </div>
+          <div style="position:absolute;inset:0;background:#FBF8F1;overflow:hidden;transition:opacity .6s ease;opacity:{{ sh3 }}">
+            <iframe src="projects/shitodo/index.html?cover=1" loading="lazy" scrolling="no" tabindex="-1" title="Shitodo" style="position:absolute;top:0;left:0;width:1440px;height:900px;border:0;pointer-events:none;transform-origin:0 0;transform:scale({{ scaleSh }})"></iframe>
+          </div>
+          <div style="position:absolute;left:3cqw;bottom:2.6cqw;display:none;gap:6px;z-index:2">
+            <sc-for list="{{ shDots }}" as="d" hint-placeholder-count="4"><span style="height:6px;border-radius:999px;transition:all .4s ease;width:{{ d.w }};background:{{ d.bg }}"></span></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 300px">
+          <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">04 · App-konsept</div>
+          <h2 onClick="{{ openSh }}" style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.035em;cursor:pointer">Shitodo</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">En mobil- og desktop-app som gjør daglige rutiner om til et spill. Poeng kommer fra streaks, momentum og merker. Presentasjonen er laget for investorer og partnere, med en klikkbar prototype.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Konsept</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">UX/UI</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Merkevare</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Prototype</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <button onClick="{{ openSh }}" style="height:48px;padding:0 22px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Se presentasjonen →</button>
+          </div>
+        </div>
+      </article>
+
+      <div style="height:1px;background:#DEDCD5"></div>
+
+      <article onMouseEnter="{{ pauseAw }}" onMouseLeave="{{ resumeAw }}" style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);align-items:center">
+        <div onClick="{{ openAw }}" ref="{{ stageAwRef }}" style="position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;cursor:pointer;container-type:inline-size;background:#FAF8F3;border:1px solid #E7E2D6;box-shadow:0 30px 60px -40px rgba(22,22,21,.5);flex:1.7 1 480px;min-width:0" style-hover="box-shadow:0 36px 70px -36px rgba(22,22,21,.6)">
+          <div style="position:absolute;inset:0;background:#FAF8F3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2.6cqw;padding:0 8cqw;transition:opacity .6s ease;opacity:{{ aw0 }}">
+            <div style="display:inline-flex;align-items:center;gap:1cqw;padding:.7cqw 1.6cqw;border-radius:999px;background:#fff;border:1px solid #E7E2D6;font:500 1.3cqw 'JetBrains Mono',monospace;letter-spacing:.06em;color:#6B6358"><span style="width:.7cqw;height:.7cqw;border-radius:50%;background:oklch(0.52 0.19 255)"></span>AIWITHOUT.AI</div>
+            <div style="font:500 6cqw/1.02 'Hanken Grotesk',sans-serif;letter-spacing:-.04em;color:#1A1814">Ask for anything.<br><span style="color:oklch(0.52 0.19 255)">Get it done</span> by an AI specialist.</div>
+          </div>
+          <div style="position:absolute;inset:0;background:#F6F1E5;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2cqw;align-items:center;padding:0 5cqw;transition:opacity .6s ease;opacity:{{ aw1 }}">
+            <div style="background:#fff;border:1px solid #E7E2D6;border-radius:2cqw;padding:2.6cqw;display:flex;flex-direction:column;gap:1.2cqw;transform:translateY(-3cqw)">
+              <div style="font:500 1.4cqw 'JetBrains Mono',monospace;color:oklch(0.52 0.19 255)">01</div>
+              <div style="font:600 2.4cqw/1.15 'Hanken Grotesk',sans-serif;letter-spacing:-.02em;color:#1A1814">Beskriv behovet med vanlige ord</div>
+            </div>
+            <div style="background:#fff;border:1px solid #E7E2D6;border-radius:2cqw;padding:2.6cqw;display:flex;flex-direction:column;gap:1.2cqw">
+              <div style="font:500 1.4cqw 'JetBrains Mono',monospace;color:oklch(0.52 0.19 255)">02</div>
+              <div style="font:600 2.4cqw/1.15 'Hanken Grotesk',sans-serif;letter-spacing:-.02em;color:#1A1814">Få fast pris og milepæler</div>
+            </div>
+            <div style="background:#1A1814;border-radius:2cqw;padding:2.6cqw;display:flex;flex-direction:column;gap:1.2cqw;transform:translateY(3cqw)">
+              <div style="font:500 1.4cqw 'JetBrains Mono',monospace;color:#9A8F7E">03</div>
+              <div style="font:600 2.4cqw/1.15 'Hanken Grotesk',sans-serif;letter-spacing:-.02em;color:#FAF8F3">En vurdert spesialist leverer</div>
+            </div>
+          </div>
+          <div style="position:absolute;inset:0;background:#FAF8F3;overflow:hidden;transition:opacity .6s ease;opacity:{{ aw2 }}">
+            <iframe src="projects/aiwithoutai/intro.html?static=1" loading="lazy" scrolling="no" tabindex="-1" title="AIWITHOUT.AI" style="position:absolute;top:0;left:0;width:1440px;height:900px;border:0;pointer-events:none;transform-origin:0 0;transform:scale({{ scaleAw }})"></iframe>
+          </div>
+          <div style="position:absolute;left:3cqw;bottom:2.6cqw;display:none;gap:6px;z-index:2">
+            <sc-for list="{{ awDots }}" as="d" hint-placeholder-count="3"><span style="height:6px;border-radius:999px;transition:all .4s ease;width:{{ d.w }};background:{{ d.bg }}"></span></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 300px">
+          <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">05 · Tjenestekonsept</div>
+          <h2 onClick="{{ openAw }}" style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.035em;cursor:pointer">AIWITHOUT.AI</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">En markedsplass der du beskriver hva du trenger med vanlige ord, får et prisoverslag delt opp i milepæler, og får jobben levert av en vurdert AI-spesialist. Klikkbar prototype fra forespørsel til levering.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Tjenestedesign</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">UX/UI</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Prototype</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <button onClick="{{ openAw }}" style="height:48px;padding:0 22px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Se presentasjonen →</button>
+          </div>
+        </div>
+      </article>
+
+      <div style="height:1px;background:#DEDCD5"></div>
+
+      <article style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);align-items:center">
+        <div onClick="{{ openDm }}" ref="{{ stageDmRef }}" style="position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;cursor:pointer;background:#2a2a26;box-shadow:0 30px 60px -40px rgba(22,22,21,.5);flex:1.7 1 480px;min-width:0" style-hover="box-shadow:0 36px 70px -36px rgba(22,22,21,.6)">
+          <iframe src="projects/datomaten/index.dc.html?cover=1" loading="lazy" scrolling="no" tabindex="-1" title="Datomaten" style="position:absolute;top:0;left:0;width:1440px;height:900px;border:0;pointer-events:none;transform-origin:0 0;transform:scale({{ scaleDm }})"></iframe>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;flex:1 1 300px">
+          <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">06 · Produktkonsept · 2025</div>
+          <h2 onClick="{{ openDm }}" style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.035em;cursor:pointer">Datomaten</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">En liten magnetisk printer for kjøleskapet med én knapp som skriver ut dagens dato på en etikett. Hjelper deg å holde oversikt over holdbarheten på matvarer du har åpnet.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Produktdesign</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Konsept</span>
+            <span style="padding:5px 11px;border-radius:999px;border:1px solid #DEDCD5;font-size:13px;color:#3E3D3A">Fysisk produkt</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <button onClick="{{ openDm }}" style="height:48px;padding:0 22px;border-radius:999px;border:0;background:#161615;color:#F3F2EE;font:700 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#B4462A">Se presentasjonen →</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCv }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="02 CV" style="flex:1;max-width:1240px;width:100%;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,48px) 96px;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:760px">
+      <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A">CV</div>
+      <h1 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,7vw,88px);line-height:.95;letter-spacing:-.04em">Nikolas Lysnes</h1>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 24px;font:500 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#3E3D3A">
+        <span>34 år</span>
+        <a href="tel:95168587" style="color:#3E3D3A;text-decoration:none" style-hover="color:#B4462A">95 16 85 87</a>
+        <a href="mailto:n.lysnes@gmail.com" style="color:#3E3D3A;text-decoration:none" style-hover="color:#B4462A">n.lysnes@gmail.com</a>
+      </div>
+    </div>
+
+    <section style="display:flex;flex-wrap:wrap;gap:24px 40px;border-top:1.5px solid #161615;padding-top:24px">
+      <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.02em;flex:1 1 240px">Arbeidserfaring</h2>
+      <div style="display:flex;flex-direction:column;flex:2.5 1 420px;min-width:0">
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2025–d.d.</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Kategorisjef – Powertools</div><div style="font-size:16px;color:#5F5E5A">Retail Support</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty">Kategori- og leverandøransvar for blant annet Milwaukee, Ryobi, AVA og Scheppach.</li><li style="text-wrap:pretty">Ansvar for verksteddrift og implementering av AI og automatisering.</li><li style="text-wrap:pretty">Utviklet interne løsninger for kundeservice, teknisk støtte, dashbord og automatisert rapportering.</li><li style="text-wrap:pretty">Etablert automatiseringer som har redusert administrativt ressursbehov tilsvarende mer enn ett årsverk.</li><li style="text-wrap:pretty">Arbeidet med innsamling, analyse og rapportering av store datamengder.</li></ul></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2021–2025</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Medgründer, forretningsfører og håndverker</div><div style="font-size:16px;color:#5F5E5A">Geometria Borealis</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty">Etablering og drift av virksomhet innen bygging og salg av geodetiske domer og mikrohus.</li><li style="text-wrap:pretty">Utførelse av snekkeroppdrag og øvrige håndverkstjenester.</li></ul></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2022–2023</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Vitenskapelig assistent</div><div style="font-size:16px;color:#5F5E5A">Universitetet i Tromsø</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty">Ettårig fulltidsstilling knyttet til «Helse i Arbeid UNG» i videregående skole.</li><li style="text-wrap:pretty">Oppfølging av intervensjonen og utarbeidelse av prosjektrapport i samarbeid med faglig ansvarlig.</li></ul></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2022–2023</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Assistent i omsorgsbolig</div><div style="font-size:16px;color:#5F5E5A">Avdeling Finnvika</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty">Oppfølging og bistand til personer med utviklingshemming.</li><li style="text-wrap:pretty">Fast helgearbeid og tilkallingsvikariat.</li></ul></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2020–2021</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Produktdesigner</div><div style="font-size:16px;color:#5F5E5A">The Grow Room</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty">Ansvar for produktdesign og brukeropplevelse i Workability, en B2B SaaS-plattform for tilrettelegging og sykefraværsoppfølging.</li></ul></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2017–2020</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Medgründer og daglig leder</div><div style="font-size:16px;color:#5F5E5A">Happens AS</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty">Medgrunnlegger og produktansvarlig for en mobilapp som samlet og presenterte arrangementer.</li><li style="text-wrap:pretty">Ledet produktutviklingen i tett samarbeid med utviklere og designere.</li><li style="text-wrap:pretty">Utarbeidet forretningsdokumenter, finansieringssøknader og investorpresentasjoner.</li><li style="text-wrap:pretty">Hentet inn over 1,2 millioner kroner fra blant annet Innovasjon Norge, SNN og private investorer.</li></ul></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2009–2016</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Øvrig arbeidserfaring</div><div style="font-size:16px;color:#5F5E5A">Coop Prix Håpet, Tromsø Taxi, Universitetet i Tromsø, Prestvannet skole og Hamna skole</div><ul style="margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.55;color:#3E3D3A"><li style="text-wrap:pretty"><strong style="color:#161615">Butikk og lager:</strong> Varemottak, innkjøp, vareplassering og ansvar for frukt- og grøntavdelingen.</li><li style="text-wrap:pretty"><strong style="color:#161615">Transport:</strong> Deltidsarbeid som taxisjåfør.</li><li style="text-wrap:pretty"><strong style="color:#161615">Skole og SFO:</strong> Tilkallingsvikar ved Hamna skole og fast deltidsstilling ved Prestvannet SFO.</li><li style="text-wrap:pretty"><strong style="color:#161615">IT og AV:</strong> Fast 10 % stilling som IT-tekniker ved UiT over åtte år, med ekstraarbeid innen kabling, montering av digitalt utstyr og flytting av inventar.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:24px 40px;border-top:1.5px solid #161615;padding-top:24px">
+      <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.02em;flex:1 1 240px">Utdanning</h2>
+      <div style="display:flex;flex-direction:column;flex:2.5 1 420px;min-width:0">
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2018–2021</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Mastergrad i sosialantropologi</div><div style="font-size:16px;color:#5F5E5A">Universitetet i Tromsø</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Feltarbeid i Silicon Valley, USA, om sosiale dynamikker i kreative prosesser.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2015–2017</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Bachelorgrad i sosialantropologi</div><div style="font-size:16px;color:#5F5E5A">Universitetet i Tromsø</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Utvekslingssemester og feltarbeid i Huelva, Spania, om siestaens betydning i arbeidslivet.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2007–2010</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Videregående utdanning</div><div style="font-size:16px;color:#5F5E5A">Tromsdalen videregående skole</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Inkludert ett års utveksling i Cambridge, Storbritannia.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A"></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Øvrig faglig bredde</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Emner innen blant annet arbeids- og organisasjonspsykologi, sosialpsykologi, helsepsykologi, pedagogikk, markedsføring, kommersialisering, økonomi og politikk.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:24px 40px;border-top:1.5px solid #161615;padding-top:24px">
+      <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.02em;flex:1 1 240px">Kurs og faglige bidrag</h2>
+      <div style="display:flex;flex-direction:column;flex:2.5 1 420px;min-width:0">
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2021</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Rådgiver – «Kreativ Næring»</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Bidro i arbeidet med boken gjennom et ukeseminar i Henningsvær, etter invitasjon fra redaktør Bjørn Eirik Olsen.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2020</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">JavaScript og React</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Udemy: «Modern JavaScript» og «Complete React Developer Course».</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2018–2019</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Arctic Accelerator</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Program innen entreprenørskap og kommersialisering.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A"></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Kurs i «Stunt Marketing»</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Gjennom UiT, Odense, Danmark.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid #DEDCD5">
+          <div style="font:500 13px/1.6 'JetBrains Mono',monospace;color:#5F5E5A">2012</div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:18px;font-weight:700">Gründerskolen</div><p style="margin:0;font-size:16px;line-height:1.55;color:#3E3D3A;text-wrap:pretty">Innovasjon Norge.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <footer style="border-top:1px solid #DEDCD5">
+    <div style="max-width:1240px;margin:0 auto;padding:28px clamp(20px,4vw,48px) 36px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#5F5E5A">
+      <span>© 2026 Nikolas Lysnes</span><span>Portfolio</span>
+    </div>
+  </footer>
+</div>
+
+<sc-if value="{{ viewerOpen }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="03 Presentasjon" style="position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:#161615">
+  <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px 0 8px;color:#F3F2EE">
+    <button onClick="{{ closeViewer }}" style="height:40px;padding:0 14px;border-radius:999px;border:0;background:transparent;color:#F3F2EE;font:600 15px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#2A2A28">← Prosjekter</button>
+    <div style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#B9B7B0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ viewerTitle }}</div>
+    <div style="display:flex;gap:6px">
+      <button onClick="{{ nextProject }}" style="height:40px;padding:0 14px;border-radius:999px;border:1px solid #3A3A37;background:transparent;color:#F3F2EE;font:600 14px 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:#2A2A28">Neste prosjekt →</button>
+    </div>
+  </div>
+  <iframe src="{{ viewerSrc }}" title="{{ viewerTitle }}" style="flex:1;width:100%;border:0;background:#fff;border-radius:14px 14px 0 0"></iframe>
+</div>
+</sc-if>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;password&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;portfolio&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tilgang&quot;},&quot;skipPassword&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tilgang&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Mini-presentasjon&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:3.5,&quot;min&quot;:2,&quot;max&quot;:8,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Mini-presentasjon&quot;}}">
+class Component extends DCLogic {
+  state = { unlocked: false, pwInput: "", pwError: false, page: "projects", sh: 3, aw: 0, pauseSh: false, pauseAw: false, viewer: null, wSh: 0, wAw: 0 };
+  stageShRef = React.createRef();
+  stageAwRef = React.createRef();
+  stageHaRef = React.createRef();
+  stageWaRef = React.createRef();
+  stageH2Ref = React.createRef();
+  stageDmRef = React.createRef();
+  projects = [
+    { id: "ha", title: "Happens", src: "projects/happens/index.dc.html" },
+    { id: "h2", title: "Happens v2", src: "projects/happens-v2/index.dc.html" },
+    { id: "wa", title: "Workability", src: "projects/workability/index.dc.html" },
+    { id: "sh", title: "Shitodo", src: "projects/shitodo/index.html" },
+    { id: "aw", title: "AIWITHOUT.AI", src: "projects/aiwithoutai/intro.html" },
+    { id: "dm", title: "Datomaten", src: "projects/datomaten/index.dc.html" },
+  ];
+  componentDidMount() {
+    try { if (sessionStorage.getItem("nl-portfolio-unlocked") === "1") this.setState({ unlocked: true }); } catch (e) {}
+    this.ro = new ResizeObserver(() => this.measure());
+    this.observe();
+    this.restartTimer();
+    this.onKey = e => { if (e.key === "Escape" && this.state.viewer) this.setState({ viewer: null }); };
+    window.addEventListener("keydown", this.onKey);
+  }
+  componentDidUpdate(pp) {
+    this.observe();
+    if (pp.slideSeconds !== this.props.slideSeconds || pp.autoplay !== this.props.autoplay) this.restartTimer();
+  }
+  componentWillUnmount() { clearInterval(this.timer); this.ro && this.ro.disconnect(); window.removeEventListener("keydown", this.onKey); }
+  observe() {
+    [this.stageShRef.current, this.stageAwRef.current, this.stageHaRef.current, this.stageWaRef.current, this.stageH2Ref.current, this.stageDmRef.current].forEach(el => { if (el && !el.__obs) { el.__obs = 1; this.ro.observe(el); } });
+    this.measure();
+  }
+  measure() {
+    const a = this.stageShRef.current ? this.stageShRef.current.clientWidth : 0;
+    const b = this.stageAwRef.current ? this.stageAwRef.current.clientWidth : 0;
+    const c = this.stageHaRef.current ? this.stageHaRef.current.clientWidth : 0;
+    const d = this.stageWaRef.current ? this.stageWaRef.current.clientWidth : 0;
+    const e2 = this.stageH2Ref.current ? this.stageH2Ref.current.clientWidth : 0;
+    const f2 = this.stageDmRef.current ? this.stageDmRef.current.clientWidth : 0;
+    if (e2 !== this.state.wH2 || f2 !== this.state.wDm) this.setState({ wH2: e2, wDm: f2 });
+    if (a !== this.state.wSh || b !== this.state.wAw || c !== this.state.wHa || d !== this.state.wWa) this.setState({ wSh: a, wAw: b, wHa: c, wWa: d });
+  }
+  restartTimer() {
+    clearInterval(this.timer);
+    if (this.props.autoplay !== true) return;
+    const ms = (this.props.slideSeconds ?? 3.5) * 1000;
+    this.timer = setInterval(() => {
+      if (this.state.viewer || !this.state.unlocked) return;
+      this.setState(s => ({ sh: s.pauseSh ? s.sh : (s.sh + 1) % 4, aw: s.pauseAw ? s.aw : (s.aw + 1) % 3 }));
+    }, ms);
+  }
+  dots(n, cur) { return Array.from({ length: n }, (_, i) => ({ w: i === cur ? "22px" : "6px", bg: i === cur ? "#161615" : "rgba(22,22,21,.28)" })); }
+  renderVals() {
+    const s = this.state;
+    const pw = this.props.password ?? "portfolio";
+    const unlocked = s.unlocked || this.props.skipPassword === true;
+    const op = (a, b) => (a === b ? "1" : "0");
+    const v = this.projects.find(p => p.id === s.viewer);
+    const open = id => () => { this.setState({ viewer: id }); };
+    return {
+      locked: !unlocked, unlocked,
+      pwInput: s.pwInput, pwError: s.pwError,
+      onPwChange: e => this.setState({ pwInput: e.target.value, pwError: false }),
+      submitPw: e => {
+        e.preventDefault();
+        if (s.pwInput === pw) { try { sessionStorage.setItem("nl-portfolio-unlocked", "1"); } catch (_) {} this.setState({ unlocked: true, pwInput: "", pwError: false }); }
+        else this.setState({ pwError: true });
+      },
+      lock: () => { try { sessionStorage.removeItem("nl-portfolio-unlocked"); } catch (_) {} this.setState({ unlocked: false, viewer: null }); },
+      isProjects: s.page === "projects", isCv: s.page === "cv",
+      goProjects: () => { this.setState({ page: "projects" }); window.scrollTo(0, 0); },
+      goCv: () => { this.setState({ page: "cv" }); window.scrollTo(0, 0); },
+      navProjBg: s.page === "projects" ? "#161615" : "transparent", navProjFg: s.page === "projects" ? "#F3F2EE" : "#161615",
+      navCvBg: s.page === "cv" ? "#161615" : "transparent", navCvFg: s.page === "cv" ? "#F3F2EE" : "#161615",
+      stageShRef: this.stageShRef, stageAwRef: this.stageAwRef, stageHaRef: this.stageHaRef, stageWaRef: this.stageWaRef,
+      scaleHa: String((s.wHa || 720) / 1440), scaleWa: String((s.wWa || 720) / 1440),
+      openHa: open("ha"), openWa: open("wa"), openH2: open("h2"), openDm: open("dm"),
+      stageH2Ref: this.stageH2Ref, stageDmRef: this.stageDmRef,
+      scaleH2: String((s.wH2 || 720) / 1440), scaleDm: String((s.wDm || 720) / 1440),
+      ...(() => { const i = this.props.autoplay === true ? s.sh : 3; return { sh0: op(i, 0), sh1: op(i, 1), sh2: op(i, 2), sh3: op(i, 3) }; })(),
+      ...(() => { const i = this.props.autoplay === true ? s.aw : 2; return { aw0: op(i, 0), aw1: op(i, 1), aw2: op(i, 2) }; })(),
+      shDots: this.dots(4, s.sh), awDots: this.dots(3, s.aw),
+      scaleSh: String((s.wSh || 720) / 1440), scaleAw: String((s.wAw || 720) / 1440),
+      pauseSh: () => this.setState({ pauseSh: true }), resumeSh: () => this.setState({ pauseSh: false }),
+      pauseAw: () => this.setState({ pauseAw: true }), resumeAw: () => this.setState({ pauseAw: false }),
+      openSh: open("sh"), openAw: open("aw"),
+      viewerOpen: !!v, viewerTitle: v ? v.title : "", viewerSrc: v ? v.src : "about:blank",
+      closeViewer: () => this.setState({ viewer: null }),
+      nextProject: () => { const i = this.projects.findIndex(p => p.id === s.viewer); this.setState({ viewer: this.projects[(i + 1) % this.projects.length].id }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
